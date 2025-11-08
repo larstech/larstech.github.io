@@ -1,16 +1,94 @@
 ---
+import { getCollection } from "astro:content"
 
+import { sortBy } from "../utils/sorting"
+
+// Personal data, sorted by relevance
+const personal = (await getCollection('personal'))
+	.sort(sortBy('displayOrder'));
+
+// Experience entries, sorted oldest -> newest
+const experience = (await getCollection('experience'))
+	.sort(sortBy('displayOrder', true));
+
+// Education entries, sorted oldest -> newest
+const education = (await getCollection('education'))
+	.sort(sortBy('displayOrder', true));
+
+// Skills, sorted by relevance
+const skills = (await getCollection('skills'))
+	.sort(sortBy('displayOrder'));
+
+// Languages, sorted by proficiency
+const languages = (await getCollection('languages'))
+	.sort(sortBy('displayOrder'));
 ---
 
-<html lang="en">
+<html lang="nl">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Lars Beijaard</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>CV</h1>
+
+		<h1>Gegevens</h1>
+		<table>
+			{personal.map((per) => (
+				<tr>
+					<td>{per.data.category}</td>
+					<td>{per.data.content}</td>
+				</tr>
+			))}
+		</table>
+
+		<h1>Ervaringen</h1>
+		{experience.map((exp) => (
+			<div>
+				<b>{exp.data.companyName} - {exp.data.jobTitle}</b><br/>
+				<i>{exp.data.startDate} &ndash; {exp.data.endDate}</i>
+				<ul>
+					{exp.data.details.map(det => (
+						<li>{det}</li>
+					))}
+				</ul>
+			</div>
+		))}
+
+		<h1>Opleidingen</h1>
+		{education.map((edu) => (
+			<div>
+				<b>{edu.data.institutionName} - {edu.data.qualification}</b><br/>
+				<i>{edu.data.enrollmentYear} &ndash; {edu.data.graduationYear}</i>
+				<ul>
+					{edu.data.details.map(det => (
+						<li>{det}</li>
+					))}
+				</ul>
+			</div>
+		))}
+
+		<h1>Vaardigheden</h1>
+		<table>
+			{skills.map((skill) => (
+				<tr>
+					<td>{skill.data.category}</td>
+					<td>{skill.data.content}</td>
+				</tr>
+			))}
+		</table>
+
+		<h1>Talen</h1>
+		<table>
+			{languages.map((lang) => (
+				<tr>
+					<td>{lang.data.language}</td>
+					<td>{lang.data.proficiency}</td>
+				</tr>
+			))}
+		</table>
 	</body>
 </html>
