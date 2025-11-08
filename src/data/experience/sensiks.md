@@ -7,4 +7,5 @@ details: [
     "Ontwikkelde een sandbox-omgeving en SDK in Unity waarmee ontwikkelaars de Sensory Reality Pod konden testen en aansturen.",
     "Richtte de ontwikkelomgeving in voor veilige interactie tussen hardware en softwaremodules."
 ]
+displayOrder: 5
 ---

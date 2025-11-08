@@ -8,4 +8,5 @@ details: [
     "Beheerde het volledige ontwikkelproces (SDLC), van analyse van requirements en ontwerp tot implementatie, testen en onderhoud.",
     "Realiseerde een gebruiksvriendelijke en efficiënte oplossing die interne processen aanzienlijk verbeterde."
 ]
+displayOrder: 20
 ---

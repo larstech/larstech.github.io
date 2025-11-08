@@ -19,6 +19,7 @@ const experience = defineCollection({
         startDate: z.string(),
         endDate: z.string(),
         details: z.array(z.string()),
+        displayOrder: z.number(),
     }),
 });
 
@@ -30,6 +31,7 @@ const education = defineCollection({
         enrollmentYear: z.coerce.string(),
         graduationYear: z.coerce.string(),
         details: z.array(z.string()),
+        displayOrder: z.number(),
     }),
 });
 
@@ -38,6 +40,7 @@ const skills = defineCollection({
     schema: z.object({
         category: z.string(),
         content: z.string(),
+        displayOrder: z.number(),
     }),
 });
 
@@ -46,6 +49,7 @@ const languages = defineCollection({
     schema: z.object({
         language: z.string(),
         proficiency: z.string(),
+        displayOrder: z.number(),
     }),
 });
 

@@ -1,13 +1,27 @@
 ---
 import { getCollection } from "astro:content"
 
-const personal = (await getCollection('personal')).sort(
-  (a, b) => a.data.displayOrder - b.data.displayOrder
-);
-const experience = await getCollection('experience');
-const education = await getCollection('education');
-const skills = await getCollection('skills');
-const languages = await getCollection('languages');
+import { sortBy } from "../utils/sorting"
+
+// Personal data, sorted by relevance
+const personal = (await getCollection('personal'))
+	.sort(sortBy('displayOrder'));
+
+// Experience entries, sorted oldest -> newest
+const experience = (await getCollection('experience'))
+	.sort(sortBy('displayOrder', true));
+
+// Education entries, sorted oldest -> newest
+const education = (await getCollection('education'))
+	.sort(sortBy('displayOrder', true));
+
+// Skills, sorted by relevance
+const skills = (await getCollection('skills'))
+	.sort(sortBy('displayOrder'));
+
+// Languages, sorted by proficiency
+const languages = (await getCollection('languages'))
+	.sort(sortBy('displayOrder'));
 ---
 
 <html lang="nl">

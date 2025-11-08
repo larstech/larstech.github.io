@@ -7,4 +7,5 @@ details: [
     "Gericht op de ontwikkelcyclus van games, van het maken van prototypes tot het opleveren van complete spellen.",
     "Afgestudeerd met een 9,3."
 ]
+displayOrder: 5
 ---
