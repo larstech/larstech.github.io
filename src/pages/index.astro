@@ -19,35 +19,49 @@ const languages = await getCollection('languages');
 		<h1>Astro</h1>
 
 		<h1>Ervaringen</h1>
-		<ul>
-			{experience.map((e) => (
-				// TODO: Displaying only the company name for testing purposes
-				<li>{e.data.companyName}</li>
-			))}
-		</ul>
+		{experience.map((exp) => (
+			<div>
+				<b>{exp.data.companyName} - {exp.data.jobTitle}</b><br/>
+				<i>{exp.data.startDate} &ndash; {exp.data.endDate}</i>
+				<ul>
+					{exp.data.details.map(det => (
+						<li>{det}</li>
+					))}
+				</ul>
+			</div>
+		))}
 
 		<h1>Opleidingen</h1>
-		<ul>
-			{education.map((e) => (
-				// TODO: Displaying only the institution name for testing purposes
-				<li>{e.data.institutionName}</li>
-			))}
-		</ul>
+		{education.map((edu) => (
+			<div>
+				<b>{edu.data.institutionName} - {edu.data.qualification}</b><br/>
+				<i>{edu.data.enrollmentYear} &ndash; {edu.data.graduationYear}</i>
+				<ul>
+					{edu.data.details.map(det => (
+						<li>{det}</li>
+					))}
+				</ul>
+			</div>
+		))}
 
 		<h1>Skills</h1>
-		<ul>
-			{skills.map((e) => (
-				// TODO: Displaying only the category for testing purposes
-				<li>{e.data.category}</li>
+		<table>
+			{skills.map((skill) => (
+				<tr>
+					<td>{skill.data.category}</td>
+					<td>{skill.data.content}</td>
+				</tr>
 			))}
-		</ul>
+		</table>
 
 		<h1>Talen</h1>
-		<ul>
-			{languages.map((e) => (
-				// TODO: Displaying only the language for testing purposes
-				<li>{e.data.language}</li>
+		<table>
+			{languages.map((lang) => (
+				<tr>
+					<td>{lang.data.language}</td>
+					<td>{lang.data.proficiency}</td>
+				</tr>
 			))}
-		</ul>
+		</table>
 	</body>
 </html>
