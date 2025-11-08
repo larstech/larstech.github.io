@@ -2,6 +2,15 @@ import { defineCollection, z } from 'astro:content';
 
 import { glob } from 'astro/loaders';
 
+const personal = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/data/personal" }),
+    schema: z.object({
+        category: z.string(),
+        content: z.string(),
+        displayOrder: z.number(),
+    }),
+});
+
 const experience = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/data/experience" }),
     schema: z.object({
@@ -40,4 +49,4 @@ const languages = defineCollection({
     }),
 });
 
-export const collections = { experience, education, skills, languages };
+export const collections = { personal, experience, education, skills, languages };

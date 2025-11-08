@@ -1,6 +1,11 @@
 ---
 import { getCollection } from "astro:content"
 
+const personal = (await getCollection('personal')).sort((a, b) => {
+  const orderA = a.data.displayOrder ?? 0;
+  const orderB = b.data.displayOrder ?? 0;
+  return orderA - orderB;
+});
 const experience = await getCollection('experience');
 const education = await getCollection('education');
 const skills = await getCollection('skills');
@@ -17,6 +22,16 @@ const languages = await getCollection('languages');
 	</head>
 	<body>
 		<h1>Astro</h1>
+
+		<h1>Gegevens</h1>
+		<table>
+			{personal.map((per) => (
+				<tr>
+					<td>{per.data.category}</td>
+					<td>{per.data.content}</td>
+				</tr>
+			))}
+		</table>
 
 		<h1>Ervaringen</h1>
 		{experience.map((exp) => (
