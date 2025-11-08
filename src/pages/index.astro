@@ -1,11 +1,9 @@
 ---
 import { getCollection } from "astro:content"
 
-const personal = (await getCollection('personal')).sort((a, b) => {
-  const orderA = a.data.displayOrder ?? 0;
-  const orderB = b.data.displayOrder ?? 0;
-  return orderA - orderB;
-});
+const personal = (await getCollection('personal')).sort(
+  (a, b) => a.data.displayOrder - b.data.displayOrder
+);
 const experience = await getCollection('experience');
 const education = await getCollection('education');
 const skills = await getCollection('skills');
