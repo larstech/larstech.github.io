@@ -1,5 +1,10 @@
 ---
+import { getCollection } from "astro:content"
 
+const experience = await getCollection('experience');
+const education = await getCollection('education');
+const skills = await getCollection('skills');
+const languages = await getCollection('languages');
 ---
 
 <html lang="en">
@@ -12,5 +17,37 @@
 	</head>
 	<body>
 		<h1>Astro</h1>
+
+		<h1>Ervaringen</h1>
+		<ul>
+			{experience.map((e) => (
+				// TODO: Displaying only the company name for testing purposes
+				<li>{e.data.companyName}</li>
+			))}
+		</ul>
+
+		<h1>Opleidingen</h1>
+		<ul>
+			{education.map((e) => (
+				// TODO: Displaying only the institution name for testing purposes
+				<li>{e.data.institutionName}</li>
+			))}
+		</ul>
+
+		<h1>Skills</h1>
+		<ul>
+			{skills.map((e) => (
+				// TODO: Displaying only the category for testing purposes
+				<li>{e.data.category}</li>
+			))}
+		</ul>
+
+		<h1>Talen</h1>
+		<ul>
+			{languages.map((e) => (
+				// TODO: Displaying only the language for testing purposes
+				<li>{e.data.language}</li>
+			))}
+		</ul>
 	</body>
 </html>
