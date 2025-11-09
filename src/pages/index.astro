@@ -3,6 +3,8 @@ import { getCollection } from "astro:content"
 
 import { sortBy } from "../utils/sorting"
 
+import "../styles/global.css";
+
 // Personal data, sorted by relevance
 const personal = (await getCollection('personal'))
 	.sort(sortBy('displayOrder'));
