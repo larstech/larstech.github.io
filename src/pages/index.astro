@@ -3,27 +3,58 @@ import { getCollection } from "astro:content"
 
 import { sortBy } from "../utils/sorting"
 
+import CvSection from "../components/CvSection.astro"
+
 import "../styles/global.css";
 
 // Personal data, sorted by relevance
 const personal = (await getCollection('personal'))
 	.sort(sortBy('displayOrder'));
 
+const personalItems = personal.map(p => ({
+	title: p.data.category,
+	floating: p.data.content
+}));
+
 // Experience entries, sorted oldest -> newest
 const experience = (await getCollection('experience'))
 	.sort(sortBy('displayOrder', true));
+
+const experienceItems = experience.map(exp => ({
+	title: exp.data.companyName,
+	subtitle: exp.data.jobTitle,
+	floating: `${exp.data.startDate} – ${exp.data.endDate}`,
+	details: exp.data.details
+}));
 
 // Education entries, sorted oldest -> newest
 const education = (await getCollection('education'))
 	.sort(sortBy('displayOrder', true));
 
+const educationItems = education.map(edu => ({
+	title: edu.data.institutionName,
+	subtitle: edu.data.qualification,
+	floating: `${edu.data.enrollmentYear} – ${edu.data.graduationYear}`,
+	details: edu.data.details
+}))
+
 // Skills, sorted by relevance
 const skills = (await getCollection('skills'))
 	.sort(sortBy('displayOrder'));
 
+const skillsItems = skills.map(skill => ({
+	title: skill.data.category,
+	floating: skill.data.content
+}))
+
 // Languages, sorted by proficiency
 const languages = (await getCollection('languages'))
 	.sort(sortBy('displayOrder'));
+
+const languageItems = languages.map(lang => ({
+	title: lang.data.language,
+	floating: lang.data.proficiency
+}))
 ---
 
 <html lang="nl">
@@ -34,63 +65,15 @@ const languages = (await getCollection('languages'))
 		<meta name="generator" content={Astro.generator} />
 		<title>Lars Beijaard</title>
 	</head>
-	<body>
-		<h1>CV</h1>
+	<body class="max-w-2xl mx-auto py-12 px-6">
+		<main class="flex flex-col space-y-10">
+			<h1 class="text-2xl font-bold mx-auto">CV</h1>
 
-		<h1>Gegevens</h1>
-		<table>
-			{personal.map((per) => (
-				<tr>
-					<td>{per.data.category}</td>
-					<td>{per.data.content}</td>
-				</tr>
-			))}
-		</table>
-
-		<h1>Ervaringen</h1>
-		{experience.map((exp) => (
-			<div>
-				<b>{exp.data.companyName} - {exp.data.jobTitle}</b><br/>
-				<i>{exp.data.startDate} &ndash; {exp.data.endDate}</i>
-				<ul>
-					{exp.data.details.map(det => (
-						<li>{det}</li>
-					))}
-				</ul>
-			</div>
-		))}
-
-		<h1>Opleidingen</h1>
-		{education.map((edu) => (
-			<div>
-				<b>{edu.data.institutionName} - {edu.data.qualification}</b><br/>
-				<i>{edu.data.enrollmentYear} &ndash; {edu.data.graduationYear}</i>
-				<ul>
-					{edu.data.details.map(det => (
-						<li>{det}</li>
-					))}
-				</ul>
-			</div>
-		))}
-
-		<h1>Vaardigheden</h1>
-		<table>
-			{skills.map((skill) => (
-				<tr>
-					<td>{skill.data.category}</td>
-					<td>{skill.data.content}</td>
-				</tr>
-			))}
-		</table>
-
-		<h1>Talen</h1>
-		<table>
-			{languages.map((lang) => (
-				<tr>
-					<td>{lang.data.language}</td>
-					<td>{lang.data.proficiency}</td>
-				</tr>
-			))}
-		</table>
+			<CvSection title="Gegevens" items={personalItems} />
+			<CvSection title="Ervaringen" items={experienceItems} />
+			<CvSection title="Opleidingen" items={educationItems} />
+			<CvSection title="Vaardigheden" items={skillsItems} />
+			<CvSection title="Talen" items={languageItems} />
+		</main>
 	</body>
 </html>
