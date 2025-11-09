@@ -1,14 +1,15 @@
 ---
 interface ItemData {
-  title: string
-  subtitle?: string
-  floating?: string
-  details?: string[]
+    title: string
+    subtitle?: string
+    floating?: string
+    image?: string
+    details?: string[]
 }
 
 export interface Props {
-  title: string
-  items: ItemData[]
+    title: string
+    items: ItemData[]
 }
 
 const { title, items } = Astro.props
@@ -17,27 +18,38 @@ const { title, items } = Astro.props
 <section class="flex flex-col gap-y-3">
     <h1 class="text-lg sm:text-xl font-bold">{title}</h1>
     {items.map((item) => (
-        <div class="ml-4">
-            <div class="flex justify-between gap-x-2">
-                <div class="flex flex-col">
-                    <h2 class="inline-flex items-center text-xs sm:text-sm font-semibold">
-                        {item.title}
-                    </h2>
-                    {item.subtitle && (
-                        <div class="text-xs sm:text-sm">{item.subtitle}</div>
+        <div class="flex flex-col">
+            <div class="flex items-start gap-x-4">
+                {item.image && (
+                    <img
+                        src={item.image}
+                        alt={item.title}
+                        class="size-12 rounded-md"
+                    />
+                )}
+
+                <div class="flex flex-1 justify-between">
+                    <div class="flex flex-col">
+                        <h2 class="text-xs sm:text-sm font-semibold">{item.title}</h2>
+                        {item.subtitle && (
+                            <p class="text-xs sm:text-sm">
+                                {item.subtitle}
+                            </p>
+                        )}
+                    </div>
+
+                    {item.floating && (
+                        <div class="text-xs sm:text-sm text-right">
+                            {item.floating}
+                        </div>
                     )}
                 </div>
-                {item.floating && (
-                    <div class="text-xs sm:text-sm text-right">{item.floating}</div>
-                )}
             </div>
 
             {item.details && item.details.length > 0 && (
-                <div class="ml-4 mt-2 text-xs sm:text-sm">
-                    <ul class="list-disc">
-                        {item.details.map((d) => <li>{d}</li>)}
-                    </ul>
-                </div>
+                <ul class="text-xs sm:text-sm ml-16 mt-2 list-disc">
+                    {item.details.map((d) => <li>{d}</li>)}
+                </ul>
             )}
         </div>
     ))}

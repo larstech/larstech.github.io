@@ -24,7 +24,8 @@ const experienceItems = experience.map(exp => ({
 	title: exp.data.companyName,
 	subtitle: exp.data.jobTitle,
 	floating: `${exp.data.startDate} – ${exp.data.endDate}`,
-	details: exp.data.details
+	details: exp.data.details,
+	image: exp.data.image
 }));
 
 // Education entries, sorted oldest -> newest
@@ -35,7 +36,8 @@ const educationItems = education.map(edu => ({
 	title: edu.data.institutionName,
 	subtitle: edu.data.qualification,
 	floating: `${edu.data.enrollmentYear} – ${edu.data.graduationYear}`,
-	details: edu.data.details
+	details: edu.data.details,
+	image: edu.data.image
 }))
 
 // Skills, sorted by relevance

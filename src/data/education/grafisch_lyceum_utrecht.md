@@ -7,5 +7,6 @@ details: [
     "Gericht op de ontwikkelcyclus van games, van het maken van prototypes tot het opleveren van complete spellen.",
     "Afgestudeerd met een 9,3."
 ]
+image: grafisch_lyceum_utrecht_logo.jpeg
 displayOrder: 5
 ---
