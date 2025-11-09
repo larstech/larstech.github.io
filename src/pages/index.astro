@@ -4,6 +4,7 @@ import { getCollection } from "astro:content"
 import { sortBy } from "../utils/sorting"
 
 import CvSection from "../components/CvSection.astro"
+import CvTableSection from "../components/CvTableSection.astro"
 
 import "../styles/global.css";
 
@@ -12,8 +13,8 @@ const personal = (await getCollection('personal'))
 	.sort(sortBy('displayOrder'));
 
 const personalItems = personal.map(p => ({
-	title: p.data.category,
-	floating: p.data.content
+	label: p.data.category,
+	value: p.data.content
 }));
 
 // Experience entries, sorted oldest -> newest
@@ -44,19 +45,19 @@ const educationItems = education.map(edu => ({
 const skills = (await getCollection('skills'))
 	.sort(sortBy('displayOrder'));
 
-const skillsItems = skills.map(skill => ({
-	title: skill.data.category,
-	floating: skill.data.content
-}))
+const skillsItems = skills.map(s => ({
+	label: s.data.category,
+	value: s.data.content
+}));
 
 // Languages, sorted by proficiency
 const languages = (await getCollection('languages'))
 	.sort(sortBy('displayOrder'));
 
-const languageItems = languages.map(lang => ({
-	title: lang.data.language,
-	floating: lang.data.proficiency
-}))
+const languageItems = languages.map(l => ({
+	label: l.data.language,
+	value: l.data.proficiency
+}));
 ---
 
 <html lang="nl">
@@ -71,11 +72,11 @@ const languageItems = languages.map(lang => ({
 		<main class="flex flex-col space-y-10">
 			<h1 class="text-2xl font-bold mx-auto">CV</h1>
 
-			<CvSection title="Gegevens" items={personalItems} />
+			<CvTableSection title="Gegevens" items={personalItems} />
 			<CvSection title="Ervaringen" items={experienceItems} />
 			<CvSection title="Opleidingen" items={educationItems} />
-			<CvSection title="Vaardigheden" items={skillsItems} />
-			<CvSection title="Talen" items={languageItems} />
+			<CvTableSection title="Vaardigheden" items={skillsItems} />
+			<CvTableSection title="Talen" items={languageItems} />
 		</main>
 	</body>
 </html>

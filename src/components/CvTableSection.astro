@@ -1,0 +1,27 @@
+---
+interface TableItem {
+    label: string
+    value: string
+}
+
+export interface Props {
+    title: string
+    items: TableItem[]
+}
+
+const { title, items } = Astro.props
+---
+
+<section class="flex flex-col gap-y-3">
+    <h1 class="text-lg sm:text-xl font-bold">{title}</h1>
+    <table class="ml-4">
+        <tbody>
+            {items.map((item) => (
+                <tr>
+                    <td class="py-0.5 text-xs sm:text-sm font-semibold">{item.label}</td>
+                    <td class="py-0.5 text-xs sm:text-sm text-right">{item.value}</td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+</section>
