@@ -8,5 +8,6 @@ details: [
     "Beheerde het volledige ontwikkelproces (SDLC), van analyse van requirements en ontwerp tot implementatie, testen en onderhoud.",
     "Realiseerde een gebruiksvriendelijke en efficiënte oplossing die interne processen aanzienlijk verbeterde."
 ]
+image: yourtech_bv_logo.jpeg
 displayOrder: 20
 ---

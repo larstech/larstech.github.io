@@ -1,0 +1,44 @@
+---
+interface ItemData {
+    title: string
+    subtitle: string
+    floating: string
+    image: string
+    details: string[]
+}
+
+export interface Props {
+    title: string
+    items: ItemData[]
+}
+
+const { title, items } = Astro.props
+---
+
+<section class="flex flex-col gap-y-3">
+    <h1 class="text-lg sm:text-xl font-bold">{title}</h1>
+    {items.map((item) => (
+        <div class="flex flex-col">
+            <div class="flex items-start gap-x-4">
+                <img alt={item.title} src={item.image} class="size-12 rounded-md" />
+
+                <div class="flex flex-1 justify-between">
+                    <div class="flex flex-col">
+                        <h2 class="text-xs sm:text-sm font-semibold">{item.title}</h2>
+                        <p class="text-xs sm:text-sm italic">{item.subtitle}</p>
+                    </div>
+
+                    <div class="text-xs sm:text-sm text-right text-gray-500">
+                        {item.floating}
+                    </div>
+                </div>
+            </div>
+
+            {item.details.length > 0 && (
+                <ul class="text-xs sm:text-sm ml-16 mt-2 list-disc">
+                    {item.details.map((d) => <li>{d}</li>)}
+                </ul>
+            )}
+        </div>
+    ))}
+</section>
