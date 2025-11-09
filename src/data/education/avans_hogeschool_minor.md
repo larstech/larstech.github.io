@@ -1,6 +1,6 @@
 ---
 institutionName: Avans Hogeschool
-qualification: Minor Systems Engineering in C++
+qualification: Minor Systems Programming in C++
 enrollmentYear: 2025
 graduationYear: heden
 details: [
