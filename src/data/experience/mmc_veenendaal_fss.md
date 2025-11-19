@@ -1,6 +1,6 @@
 ---
 companyName: MMC Veenendaal
-jobTitle: Softwareontwikkelaar & Sales
+jobTitle: Full-stack developer & Sales
 startDate: jun 2022
 endDate: dec 2023
 details: [

@@ -1,6 +1,6 @@
 ---
 companyName: Flitsmeister
-jobTitle: Stagiair Softwareontwikkelaar
+jobTitle: Stagiair iOS-developer
 startDate: sep 2024
 endDate: jan 2025
 details: [
