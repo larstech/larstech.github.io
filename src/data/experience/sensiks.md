@@ -1,6 +1,6 @@
 ---
 companyName: Sensiks
-jobTitle: Stagiair Softwareontwikkelaar
+jobTitle: Stagiair Unity SDK Developer
 startDate: feb 2021
 endDate: jan 2022
 details: [

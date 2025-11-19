@@ -1,6 +1,6 @@
 ---
 companyName: Flitsmeister
-jobTitle: Softwareontwikkelaar
+jobTitle: Front-end developer
 startDate: nov 2025
 endDate: heden
 details: [
