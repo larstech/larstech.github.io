@@ -1,6 +1,6 @@
 ---
 companyName: Yourtech
-jobTitle: Full-stack developer
+jobTitle: Freelance Full-stack developer
 startDate: jul 2025
 endDate: heden
 details: [
