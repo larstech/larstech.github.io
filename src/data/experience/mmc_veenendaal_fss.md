@@ -8,6 +8,7 @@ details: [
     "Startte de digitalisering van bedrijfsprocessen door een CRUD-systeem te ontwikkelen voor documentbeheer met dynamische vraag-antwoordfunctionaliteit.",
     "Ondersteunde de verkoopafdeling met technisch advies en klantcontact."
 ]
+skills: [Python, Laravel, PowerShell, Watervalmethode, DevOps]
 image: mmc_veenendaal_logo.jpeg
 displayOrder: 10
 ---
