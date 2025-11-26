@@ -5,6 +5,7 @@ interface ItemData {
     floating: string
     image: string
     details: string[]
+    skills: string[]
 }
 
 export interface Props {
@@ -18,7 +19,7 @@ const { title, items } = Astro.props
 <section class="flex flex-col gap-y-3">
     <h1 class="text-lg sm:text-xl font-bold">{title}</h1>
     {items.map((item) => (
-        <div class="flex flex-col">
+        <div class="flex flex-col border-b border-gray-200 pb-3">
             <div class="flex items-start gap-x-4">
                 <img alt={item.title} src={item.image} class="size-12 rounded-md" />
 
@@ -38,6 +39,17 @@ const { title, items } = Astro.props
                 <ul class="text-xs sm:text-sm ml-16 mt-2 list-disc">
                     {item.details.map((d) => <li>{d}</li>)}
                 </ul>
+            )}
+
+            {item.skills.length > 0 && (
+                <div class="flex items-start mt-2">
+                    <h6 class="text-xs sm:text-sm font-semibold ml-16">Vaardigheden:</h6>
+                    <div class="text-xs sm:text-sm ml-2">
+                        {item.skills.map((d, i) => (
+                            <span>{d}{i < item.skills.length - 1 ? ', ' : ''}</span>
+                        ))}
+                    </div>
+                </div>
             )}
         </div>
     ))}

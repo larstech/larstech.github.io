@@ -1,5 +1,5 @@
 ---
 category: Tools en concepten
-content: UML, Linux, basiskennis van security en privacyprincipes
-displayOrder: 15
+content: Basiskennis van security en privacyprincipes, Linux, UML
+displayOrder: 10
 ---

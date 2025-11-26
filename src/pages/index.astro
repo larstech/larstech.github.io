@@ -25,8 +25,9 @@ const experienceItems = experience.map(exp => ({
 	title: exp.data.companyName,
 	subtitle: exp.data.jobTitle,
 	floating: `${exp.data.startDate} – ${exp.data.endDate}`,
-	details: exp.data.details,
-	image: exp.data.image
+    details: exp.data.details,
+    skills: exp.data.skills,
+    image: exp.data.image
 }));
 
 // Education entries, sorted oldest -> newest
@@ -38,6 +39,7 @@ const educationItems = education.map(edu => ({
 	subtitle: edu.data.qualification,
 	floating: `${edu.data.enrollmentYear} – ${edu.data.graduationYear}`,
 	details: edu.data.details,
+    skills: edu.data.skills,
 	image: edu.data.image
 }))
 
@@ -75,7 +77,7 @@ const languageItems = languages.map(l => ({
 			<CvTableSection title="Gegevens" items={personalItems} />
 			<CvSection title="Ervaringen" items={experienceItems} />
 			<CvSection title="Opleidingen" items={educationItems} />
-			<CvTableSection title="Vaardigheden" items={skillsItems} />
+			<CvTableSection title="Vaardigheden (extra's)" items={skillsItems} />
 			<CvTableSection title="Talen" items={languageItems} />
 		</main>
 	</body>

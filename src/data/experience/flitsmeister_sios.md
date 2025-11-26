@@ -8,6 +8,7 @@ details: [
     "Bouwde een systeem dat Flitsmeister-notificaties via trilpatronen naar de watch stuurt, zodat bestuurders waarschuwingen herkennen zonder hun aandacht van de weg te halen.",
     "Stage afgerond met een 10,0."
 ]
+skills: [Swift, Agile, UX/UI Design]
 image: flitsmeister_logo.jpeg
 displayOrder: 15
 ---
