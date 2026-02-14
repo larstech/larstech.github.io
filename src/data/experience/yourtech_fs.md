@@ -2,7 +2,7 @@
 companyName: Yourtech
 jobTitle: Freelance Full-stack developer
 startDate: jul 2025
-endDate: jan 2026
+endDate: feb 2026
 details: [
     "Ontwikkel zelfstandig een digitale planningstool als alternatief voor Excel en dure commerciële oplossingen.",
     "Beheer het volledige ontwikkelproces (SDLC), van analyse van requirements en ontwerp tot implementatie, testen en onderhoud.",
